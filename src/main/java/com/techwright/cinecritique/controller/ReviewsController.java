@@ -5,6 +5,7 @@ import com.techwright.cinecritique.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,13 +26,13 @@ public class ReviewsController {
     }
 
 /*    @GetMapping("/Reviews/{imdbId}")
-    public ResponseEntity<Optional<Reviews>> getMovieReviews(@PathVariable String imdbId){
-        return new ResponseEntity<Optional<Reviews>>(reviewService.findReviewsByImdbId(imdbId), HttpStatus.OK);
+    public ResponseEntity<List<Reviews>> getReviews(@PathVariable String imdbId){
+        return new ResponseEntity<List<Reviews>>((MultiValueMap<String, String>) reviewService.getReviews(imdbId), HttpStatus.OK);
     }*/
 
-//    @GetMapping("/{imdbId}")
-//    public ResponseEntity<List<Optional<Reviews>>> getMovieReviews(@PathVariable String imdbId){
-//        return new ResponseEntity<List<Optional<Reviews>>>(reviewService.findReviewsByImdbId(imdbId), HttpStatus.OK);
-//    }
+    @GetMapping("/{imdbId}/reviews")
+    public ResponseEntity<List<Optional<Reviews>>> getMovieReviews(@PathVariable String imdbId){
+        return new ResponseEntity<List<Optional<Reviews>>>(reviewService.findReviewsByImdbId(imdbId), HttpStatus.OK);
+    }
 
 }

@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 public class Reviews {
 
     private ObjectId id;
+    private ObjectId imdbId;
     private String body;
     private LocalDateTime created;
     private LocalDateTime updated;
